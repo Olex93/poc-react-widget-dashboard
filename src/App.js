@@ -16,7 +16,7 @@ function App() {
   const widgetScript = `<script>
   const MyWidget = zoid.create({
     tag: "my-widget",
-    url: 'http://localhost:3000/index.html',
+    url: 'https://poc-react-widget.netlify.app/',
     dimensions: {
       width: "100%",
       height: "100%",
