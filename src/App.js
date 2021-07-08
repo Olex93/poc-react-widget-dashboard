@@ -13,13 +13,13 @@ function App() {
     
   //These consts define the wrapper for the iframe to determine it's positioning in the client
   const chatContainer =
-    "<div id='container' style='width: 300px; height: 500px; position: fixed; bottom: 0; right: 5%'></div>";
+    "<div id='container' style='z-index:999; width: 300px; height: 500px; position: fixed; bottom: 0; right: 5%'></div>";
   const topBarContainer =
-    "<div id='container' style='width: 100%; height: 50px; position: fixed; top: 0; left: 0'></div>";
+    "<div id='container' style='z-index:999; width: 100%; height: 50px; position: fixed; top: 0; left: 0'></div>";
   const footerContainer =
-    "<div id='container' style='width: 100%; height: 100px; margin-bottom: -100px ; position: absolute; bottom: 0; left: 0'></div>";
+    "<div id='container' style='z-index:999; width: 100%; height: 100px; margin-bottom: -100px ; position: absolute; bottom: 0; left: 0'></div>";
   const iframeContainer =
-    "<div id='container' style='width: 100%; height: 100%'></div>";
+    "<div id='container' style='z-index:999; width: 100%; height: 100%'></div>";
 
   //Local state is used to allow the user to select their options
   const [highlightColor, setHighlightColor] = React.useState("#953021");
