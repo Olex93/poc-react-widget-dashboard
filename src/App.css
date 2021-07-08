@@ -1,10 +1,18 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+input, label, button {
+  display: block
+}
+
+input, select {
+  margin-bottom: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
