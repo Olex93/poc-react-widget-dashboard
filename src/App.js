@@ -54,12 +54,14 @@ function App() {
 
   // URL STRING FOR LIVE
   // url: 'https://poc-react-widget.netlify.app/',
+  //Localhost string for testing
+  //http://localhost:3000/index.html
 
   //This is the zoid embed code that links to our CDN with user selected state variables passed in
   const widgetScript = `<script>
   const MyWidget = zoid.create({
     tag: "my-widget",
-    url: 'http://localhost:3000/index.html',
+    url: 'https://poc-react-widget.netlify.app/',
     dimensions: {
       width: "100%",
       height: "100%",
