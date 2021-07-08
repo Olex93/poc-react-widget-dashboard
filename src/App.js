@@ -7,17 +7,21 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function App() {
+  //This is the script needed for the client to load the zoid framework
   const zoidScript =
     "<script src='http://krakenjs.com/zoid/dist/zoid.frameworks.js'></script>";
+    
+  //These consts define the wrapper for the iframe to determine it's positioning in the client
   const chatContainer =
     "<div id='container' style='width: 300px; height: 500px; position: fixed; bottom: 0; right: 5%'></div>";
   const topBarContainer =
     "<div id='container' style='width: 100%; height: 50px; position: fixed; top: 0; left: 0'></div>";
   const footerContainer =
-    "<div id='container' style='width: 100%; height: 100px; margin-bottom: -100px ; position: fixed; bottom: 0; left: 0'></div>";
+    "<div id='container' style='width: 100%; height: 100px; margin-bottom: -100px ; position: absolute; bottom: 0; left: 0'></div>";
   const iframeContainer =
-    "div id='container' style='width: 100%; height: 100%'></div>";
+    "<div id='container' style='width: 100%; height: 100%'></div>";
 
+  //Local state is used to allow the user to select their options
   const [highlightColor, setHighlightColor] = React.useState("#953021");
   const [backgroundColor, setBackgroundColor] = React.useState("#ededed");
   const [companyName, setCompanyName] = React.useState("Fourleaf");
@@ -26,9 +30,32 @@ function App() {
     React.useState(chatContainer);
   const [showScript, setShowScript] = React.useState(false);
 
+  //Simple function to update the selected container depending on the selected widget type
+  function controlWidgetPositioning(value) {
+    setWidgetType(value);
+    if (value === "chatBox") {
+      setSelectedContainer(chatContainer);
+    }
+    if (value === "topBar") {
+      setSelectedContainer(topBarContainer);
+    }
+    if (value === "footer") {
+      setSelectedContainer(footerContainer);
+    }
+    if (value === "iframeEmbed") {
+      setSelectedContainer(iframeContainer);
+    }
+  }
+
+  //Function to show the script on submit button click
+  function generateCode() {
+    setShowScript(true);
+  }
+
   // URL STRING FOR LIVE
   // url: 'https://poc-react-widget.netlify.app/',
 
+  //This is the zoid embed code that links to our CDN with user selected state variables passed in
   const widgetScript = `<script>
   const MyWidget = zoid.create({
     tag: "my-widget",
@@ -50,35 +77,21 @@ function App() {
   };
   MyWidget(options).render(element);</script>`;
 
-  function controlWidgetPositioning(value) {
-    setWidgetType(value);
-    if (value === "chatBox") {
-      setSelectedContainer(chatContainer);
-    }
-    if (value === "topBar") {
-      setSelectedContainer(topBarContainer);
-    }
-    if (value === "footer") {
-      setSelectedContainer(footerContainer);
-    }
-    if (value === "iframeEmbed") {
-      setSelectedContainer(iframeContainer);
-    }
-  }
+  
 
-  function generateCode() {
-    setShowScript(true);
-  }
 
   return (
     <Container className="App my-4">
-    <Row className="mb-4">
-      <Col>
-      <h1 className="mb-3">Hey!</h1>
-      <p className="mb-2">Let's generate your widget embed code.</p>
-      <p className="mb-2">Fll in the fields below then click on the button to generate an embed code that you can use to install the widget on your web pages.</p>
-      </Col>
-    </Row>
+      <Row className="mb-4">
+        <Col>
+          <h1 className="mb-3">Hey!</h1>
+          <p className="mb-2">Let's generate your widget embed code.</p>
+          <p className="mb-2">
+            Fll in the fields below then click on the button to generate an
+            embed code that you can use to install the widget on your web pages.
+          </p>
+        </Col>
+      </Row>
 
       <h2 className="mb-3">Define your options</h2>
       <Form>
