@@ -80,7 +80,6 @@ function App() {
       const loadedResources = performance.getEntriesByType("resource");
       let resourceSizes = [];
       loadedResources.forEach((resourceItem) => {
-        console.log(resourceItem)
         resourceSizes.push(resourceItem.encodedBodySize);
         setTotalResourcesSize(resourceSizes.reduce((a, b) => a + b, 0) / 1000);
       });
