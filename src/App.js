@@ -73,8 +73,14 @@ function App() {
     backgroundColor: '${backgroundColor}',
     companyName: '${companyName}',
     widgetType: '${widgetType}',
-    changeColor: (setColor, color) => {
-      setColor(color)
+    calcLoadedResources: (setTotalResourcesSize) => {
+      const loadedResources = performance.getEntriesByType("resource");
+      let resourceSizes = [];
+      loadedResources.forEach((resourceItem) => {
+        console.log(resourceItem)
+        resourceSizes.push(resourceItem.encodedBodySize);
+        setTotalResourcesSize(resourceSizes.reduce((a, b) => a + b, 0) / 1000);
+      });
     }
   };
   MyWidget(options).render(element);</script>`;
