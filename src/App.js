@@ -73,6 +73,9 @@ function App() {
     backgroundColor: '${backgroundColor}',
     companyName: '${companyName}',
     widgetType: '${widgetType}',
+    changeColor: (setColor, color) => {
+      setColor(color)
+    },
     calcLoadedResources: (setTotalResourcesSize) => {
       const loadedResources = performance.getEntriesByType("resource");
       let resourceSizes = [];
